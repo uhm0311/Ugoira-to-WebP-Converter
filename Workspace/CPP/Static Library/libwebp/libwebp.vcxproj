@@ -1,0 +1,267 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\anim_diff.c" />
+    <ClCompile Include="src\anim_util.c" />
+    <ClCompile Include="src\cwebp.cpp" />
+    <ClCompile Include="src\dec\alpha_dec.c" />
+    <ClCompile Include="src\dec\buffer.c" />
+    <ClCompile Include="src\dec\frame_dec.c" />
+    <ClCompile Include="src\dec\idec.c" />
+    <ClCompile Include="src\dec\io.c" />
+    <ClCompile Include="src\dec\quant_dec.c" />
+    <ClCompile Include="src\dec\tree_dec.c" />
+    <ClCompile Include="src\dec\vp8.c" />
+    <ClCompile Include="src\dec\vp8l_dec.c" />
+    <ClCompile Include="src\dec\webp.c" />
+    <ClCompile Include="src\demux\anim_decode.c" />
+    <ClCompile Include="src\demux\demux.c" />
+    <ClCompile Include="src\dsp\alpha_processing.c" />
+    <ClCompile Include="src\dsp\alpha_processing_mips_dsp_r2.c" />
+    <ClCompile Include="src\dsp\alpha_processing_sse2.c" />
+    <ClCompile Include="src\dsp\alpha_processing_sse41.c" />
+    <ClCompile Include="src\dsp\argb.c" />
+    <ClCompile Include="src\dsp\argb_mips_dsp_r2.c" />
+    <ClCompile Include="src\dsp\argb_sse2.c" />
+    <ClCompile Include="src\dsp\cost_dec.c" />
+    <ClCompile Include="src\dsp\cost_mips32.c" />
+    <ClCompile Include="src\dsp\cost_mips_dsp_r2.c" />
+    <ClCompile Include="src\dsp\cost_sse2.c" />
+    <ClCompile Include="src\dsp\cpu.c" />
+    <ClCompile Include="src\dsp\dec.c" />
+    <ClCompile Include="src\dsp\dec_clip_tables.c" />
+    <ClCompile Include="src\dsp\dec_mips32.c" />
+    <ClCompile Include="src\dsp\dec_mips_dsp_r2.c" />
+    <ClCompile Include="src\dsp\dec_msa.c" />
+    <ClCompile Include="src\dsp\dec_neon.c" />
+    <ClCompile Include="src\dsp\dec_sse2.c" />
+    <ClCompile Include="src\dsp\dec_sse41.c" />
+    <ClCompile Include="src\dsp\enc.c" />
+    <ClCompile Include="src\dsp\enc_avx2.c" />
+    <ClCompile Include="src\dsp\enc_mips32.c" />
+    <ClCompile Include="src\dsp\enc_mips_dsp_r2.c" />
+    <ClCompile Include="src\dsp\enc_neon.c" />
+    <ClCompile Include="src\dsp\enc_sse2.c" />
+    <ClCompile Include="src\dsp\enc_sse41.c" />
+    <ClCompile Include="src\dsp\filters_dsp.c" />
+    <ClCompile Include="src\dsp\filters_mips_dsp_r2.c" />
+    <ClCompile Include="src\dsp\filters_sse2.c" />
+    <ClCompile Include="src\dsp\lossless.c" />
+    <ClCompile Include="src\dsp\lossless_enc.c" />
+    <ClCompile Include="src\dsp\lossless_enc_mips32.c" />
+    <ClCompile Include="src\dsp\lossless_enc_mips_dsp_r2.c" />
+    <ClCompile Include="src\dsp\lossless_enc_neon.c" />
+    <ClCompile Include="src\dsp\lossless_enc_sse2.c" />
+    <ClCompile Include="src\dsp\lossless_enc_sse41.c" />
+    <ClCompile Include="src\dsp\lossless_mips_dsp_r2.c" />
+    <ClCompile Include="src\dsp\lossless_neon.c" />
+    <ClCompile Include="src\dsp\lossless_sse2.c" />
+    <ClCompile Include="src\dsp\rescaler_dsp.c" />
+    <ClCompile Include="src\dsp\rescaler_mips32.c" />
+    <ClCompile Include="src\dsp\rescaler_mips_dsp_r2.c" />
+    <ClCompile Include="src\dsp\rescaler_neon.c" />
+    <ClCompile Include="src\dsp\rescaler_sse2.c" />
+    <ClCompile Include="src\dsp\upsampling.c" />
+    <ClCompile Include="src\dsp\upsampling_mips_dsp_r2.c" />
+    <ClCompile Include="src\dsp\upsampling_neon.c" />
+    <ClCompile Include="src\dsp\upsampling_sse2.c" />
+    <ClCompile Include="src\dsp\yuv.c" />
+    <ClCompile Include="src\dsp\yuv_mips32.c" />
+    <ClCompile Include="src\dsp\yuv_mips_dsp_r2.c" />
+    <ClCompile Include="src\dsp\yuv_sse2.c" />
+    <ClCompile Include="src\dwebp.c" />
+    <ClCompile Include="src\enc\alpha_enc.c" />
+    <ClCompile Include="src\enc\analysis.c" />
+    <ClCompile Include="src\enc\backward_references.c" />
+    <ClCompile Include="src\enc\config.c" />
+    <ClCompile Include="src\enc\cost_enc.c" />
+    <ClCompile Include="src\enc\delta_palettization.c" />
+    <ClCompile Include="src\enc\filter.c" />
+    <ClCompile Include="src\enc\frame_enc.c" />
+    <ClCompile Include="src\enc\histogram.c" />
+    <ClCompile Include="src\enc\iterator.c" />
+    <ClCompile Include="src\enc\near_lossless.c" />
+    <ClCompile Include="src\enc\picture.c" />
+    <ClCompile Include="src\enc\picture_csp.c" />
+    <ClCompile Include="src\enc\picture_psnr.c" />
+    <ClCompile Include="src\enc\picture_rescale.c" />
+    <ClCompile Include="src\enc\picture_tools.c" />
+    <ClCompile Include="src\enc\quant_enc.c" />
+    <ClCompile Include="src\enc\syntax.c" />
+    <ClCompile Include="src\enc\token.c" />
+    <ClCompile Include="src\enc\tree_enc.c" />
+    <ClCompile Include="src\enc\vp8l_enc.c" />
+    <ClCompile Include="src\enc\webpenc.c" />
+    <ClCompile Include="src\example_util.c" />
+    <ClCompile Include="src\extras\extras.c" />
+    <ClCompile Include="src\gif2webp.c" />
+    <ClCompile Include="src\gifdec.c" />
+    <ClCompile Include="src\image_dec.c" />
+    <ClCompile Include="src\jpegdec.c" />
+    <ClCompile Include="src\metadata.c" />
+    <ClCompile Include="src\mux\anim_encode.c" />
+    <ClCompile Include="src\mux\muxedit.c" />
+    <ClCompile Include="src\mux\muxinternal.c" />
+    <ClCompile Include="src\mux\muxread.c" />
+    <ClCompile Include="src\pngdec.c" />
+    <ClCompile Include="src\tiffdec.c" />
+    <ClCompile Include="src\utils\bit_reader.c" />
+    <ClCompile Include="src\utils\bit_writer.c" />
+    <ClCompile Include="src\utils\color_cache.c" />
+    <ClCompile Include="src\utils\filters_utils.c" />
+    <ClCompile Include="src\utils\huffman.c" />
+    <ClCompile Include="src\utils\huffman_encode.c" />
+    <ClCompile Include="src\utils\quant_levels.c" />
+    <ClCompile Include="src\utils\quant_levels_dec.c" />
+    <ClCompile Include="src\utils\random.c" />
+    <ClCompile Include="src\utils\rescaler_utils.c" />
+    <ClCompile Include="src\utils\thread.c" />
+    <ClCompile Include="src\utils\utils.c" />
+    <ClCompile Include="src\vwebp.c" />
+    <ClCompile Include="src\webpdec.c" />
+    <ClCompile Include="src\webpmux.cpp" />
+    <ClCompile Include="src\wicdec.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\anim_util.h" />
+    <ClInclude Include="src\cwebp.h" />
+    <ClInclude Include="src\dec\alphai.h" />
+    <ClInclude Include="src\dec\common.h" />
+    <ClInclude Include="src\dec\decode_vp8.h" />
+    <ClInclude Include="src\dec\vp8i.h" />
+    <ClInclude Include="src\dec\vp8li.h" />
+    <ClInclude Include="src\dec\webpi.h" />
+    <ClInclude Include="src\dsp\common_sse2.h" />
+    <ClInclude Include="src\dsp\dsp.h" />
+    <ClInclude Include="src\dsp\lossless.h" />
+    <ClInclude Include="src\dsp\mips_macro.h" />
+    <ClInclude Include="src\dsp\msa_macro.h" />
+    <ClInclude Include="src\dsp\neon.h" />
+    <ClInclude Include="src\dsp\yuv.h" />
+    <ClInclude Include="src\enc\backward_references.h" />
+    <ClInclude Include="src\enc\cost.h" />
+    <ClInclude Include="src\enc\delta_palettization.h" />
+    <ClInclude Include="src\enc\histogram.h" />
+    <ClInclude Include="src\enc\vp8enci.h" />
+    <ClInclude Include="src\enc\vp8li.h" />
+    <ClInclude Include="src\example_util.h" />
+    <ClInclude Include="src\gifdec.h" />
+    <ClInclude Include="src\image_dec.h" />
+    <ClInclude Include="src\jpegdec.h" />
+    <ClInclude Include="src\metadata.h" />
+    <ClInclude Include="src\mux\muxi.h" />
+    <ClInclude Include="src\pngdec.h" />
+    <ClInclude Include="src\stopwatch.h" />
+    <ClInclude Include="src\tiffdec.h" />
+    <ClInclude Include="src\utils\bit_reader.h" />
+    <ClInclude Include="src\utils\bit_reader_inl.h" />
+    <ClInclude Include="src\utils\bit_writer.h" />
+    <ClInclude Include="src\utils\color_cache.h" />
+    <ClInclude Include="src\utils\endian_inl.h" />
+    <ClInclude Include="src\utils\filters.h" />
+    <ClInclude Include="src\utils\huffman.h" />
+    <ClInclude Include="src\utils\huffman_encode.h" />
+    <ClInclude Include="src\utils\quant_levels.h" />
+    <ClInclude Include="src\utils\quant_levels_dec.h" />
+    <ClInclude Include="src\utils\random.h" />
+    <ClInclude Include="src\utils\rescaler.h" />
+    <ClInclude Include="src\utils\thread.h" />
+    <ClInclude Include="src\utils\utils.h" />
+    <ClInclude Include="src\webpdec.h" />
+    <ClInclude Include="src\webpmux.h" />
+    <ClInclude Include="src\webp\decode.h" />
+    <ClInclude Include="src\webp\demux.h" />
+    <ClInclude Include="src\webp\encode.h" />
+    <ClInclude Include="src\webp\extras.h" />
+    <ClInclude Include="src\webp\format_constants.h" />
+    <ClInclude Include="src\webp\mux.h" />
+    <ClInclude Include="src\webp\mux_types.h" />
+    <ClInclude Include="src\webp\types.h" />
+    <ClInclude Include="src\wicdec.h" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{301B66A0-ABA2-47FF-BC9E-BD2DA16D6A83}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>libwebp</RootNamespace>
+    <ProjectName>libwebp</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v110</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>$(SolutionDir)Workspace\libjpeg\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Workspace\libjpeg\lib;$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)$(Configuration)\$(MSBuildProjectName)\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <IncludePath>$(SolutionDir)Workspace\libjpeg\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Workspace\libjpeg\lib;$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)$(Configuration)\$(MSBuildProjectName)\</OutDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeaderFile />
+      <PrecompiledHeaderOutputFile />
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeaderFile />
+      <PrecompiledHeaderOutputFile />
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
