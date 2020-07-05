@@ -103,12 +103,16 @@ namespace Pixiv.Utilities.Ugoira.Download.Managers
                                 browser.EvaluateScriptAsync(script.ToString()).ContinueWith(response =>
                                 {
                                     JToken ugoiraData = JObject.Parse(response.Result.Result.ToString());
+                                    string fileName = ugoiraData[ugoiraZipFileName].ToString();
 
-                                    ugoiraZipFileNamesQueue.Enqueue(ugoiraData[ugoiraZipFileName].ToString());
-                                    ugoiraSrcMap.Add(ugoiraData[ugoiraZipFileName].ToString(), new Tuple<string, string, string>(ugoiraLinks[ugoiraIndex - 1], ugoiraData[ugoiraSrcName].ToString(), ugoiraData[ugoiraInfo].ToString()));
+                                    if (!ugoiraSrcMap.ContainsKey(fileName))
+                                    {
+                                        ugoiraZipFileNamesQueue.Enqueue(fileName);
+                                        ugoiraSrcMap.Add(fileName, new Tuple<string, string, string>(ugoiraLinks[ugoiraIndex - 1], ugoiraData[ugoiraSrcName].ToString(), ugoiraData[ugoiraInfo].ToString()));
 
-                                    onUgoiraNavigationPerformed(ugoiraIndex, ugoiraLinks.Count);
-                                    navigateNextUgoira();
+                                        onUgoiraNavigationPerformed(ugoiraIndex, ugoiraLinks.Count);
+                                        navigateNextUgoira();
+                                    }
                                 });
                             }
                         }
