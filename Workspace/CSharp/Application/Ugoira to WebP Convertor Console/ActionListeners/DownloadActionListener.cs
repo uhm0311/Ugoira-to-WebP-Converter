@@ -70,7 +70,7 @@ namespace Pixiv.Utilities.Ugoira.Download.ActionListeners
             Console.Write(message);*/
         }
 
-        public void onUgoiraDownloadPerformed(string ugoiraZipFileName, string base64UgoiraZip, int currentPosition, int ugoiraCount)
+        public void onUgoiraDownloadPerformed(string ugoiraZipFileName, string ugoiraUserName, string base64UgoiraZip, int currentPosition, int ugoiraCount)
         {
             File.WriteAllBytes(Path.Combine(FileManager.inputPath, ugoiraZipFileName), System.Convert.FromBase64String(base64UgoiraZip));
 

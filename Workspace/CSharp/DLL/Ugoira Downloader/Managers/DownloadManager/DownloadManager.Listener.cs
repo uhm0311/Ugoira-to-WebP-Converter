@@ -27,7 +27,7 @@ namespace Pixiv.Utilities.Ugoira.Download.Managers
         {
             void onUgoiraDownloadStarted(string ugoiraZipFileName, int currentPosition, int ugoiraCount);
             void onUgoiraDownloadProcessing(string ugoiraZipFileName, int ugoiraPosition, int ugoiraCount, long downloadedBytes, long totalBytes);
-            void onUgoiraDownloadPerformed(string ugoiraZipFileName, string base64UgoiraZip, int currentPosition, int ugoiraCount);
+            void onUgoiraDownloadPerformed(string ugoiraZipFileName, string ugoiraUserName, string base64UgoiraZip, int currentPosition, int ugoiraCount);
             void onUgoiraDownloadFailed(string ugoiraZipFileName, int currentPosition, int ugoiraCount);
         }
 
@@ -89,10 +89,10 @@ namespace Pixiv.Utilities.Ugoira.Download.Managers
                 downloadListener.onUgoiraDownloadProcessing(ugoiraZipFileName, ugoiraPosition, ugoiraCount, downloadedBytes, totalBytes);
         }
 
-        private void onUgoiraDownloadPerformed(string ugoiraZipFileName, string base64UgoiraZip, int currentPosition, int ugoiraCount)
+        private void onUgoiraDownloadPerformed(string ugoiraZipFileName, string ugoiraUserName, string base64UgoiraZip, int currentPosition, int ugoiraCount)
         {
             if (downloadListener != null)
-                downloadListener.onUgoiraDownloadPerformed(ugoiraZipFileName, base64UgoiraZip, currentPosition, ugoiraCount);
+                downloadListener.onUgoiraDownloadPerformed(ugoiraZipFileName, ugoiraUserName, base64UgoiraZip, currentPosition, ugoiraCount);
         }
 
         private void onUgoiraDownloadFailed(string ugoiraZipFileName, int currentPosition, int ugoiraCount)

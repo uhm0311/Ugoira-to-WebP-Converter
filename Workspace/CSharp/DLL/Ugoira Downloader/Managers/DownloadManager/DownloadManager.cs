@@ -11,7 +11,7 @@ namespace Pixiv.Utilities.Ugoira.Download.Managers
     {
         private List<string> ugoiraLinks = new List<string>();
 
-        private Dictionary<string, Tuple<string, string, string>> ugoiraSrcMap = new Dictionary<string, Tuple<string, string, string>>();
+        private Dictionary<string, Tuple<string, string, string, string>> ugoiraSrcMap = new Dictionary<string, Tuple<string, string, string, string>>();
         private ConcurrentQueue<string> ugoiraZipFileNamesQueue = new ConcurrentQueue<string>();
         private List<string> ugoiraZipFileNames = new List<string>();
 
