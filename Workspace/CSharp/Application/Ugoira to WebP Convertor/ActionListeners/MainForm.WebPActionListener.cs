@@ -10,12 +10,12 @@ namespace Pixiv.Utilities.Ugoira.Convert.WebP
 {
     partial class MainForm : WebPManager.ActionListener
     {
-        public void onAssemblyStarted(string ugoiraPath, int currentPosition, int ugoiraCount)
+        public void onAssemblyStarted(string ugoiraPath, string ugoiraName, int currentPosition, int ugoiraCount)
         {
-            setProgressLabelText(currentPosition - 1, "Assembling \"" + Path.GetFileName(ugoiraPath) + "\"... " + progressMessage(currentPosition, ugoiraCount));
+            setProgressLabelText(currentPosition - 1, "Assembling \"" + ugoiraName + "\"... " + progressMessage(currentPosition, ugoiraCount));
         }
 
-        public void onAssemblyPerformed(string ugoiraPath, int currentPosition, int ugoiraCount)
+        public void onAssemblyPerformed(string ugoiraPath, string ugoiraName, int currentPosition, int ugoiraCount)
         {
             string searchPattern = Path.GetFileName(ugoiraPath) + "*";
             string parent = Directory.GetParent(ugoiraPath).FullName;
@@ -29,7 +29,7 @@ namespace Pixiv.Utilities.Ugoira.Convert.WebP
             setProgressLabelText(currentPosition - 1, getProgressLabelText(currentPosition - 1) + " Done.");
         }
 
-        public void onAseemblyFailed(string ugoiraPath, int currentPosition, int ugoiraCount)
+        public void onAseemblyFailed(string ugoiraPath, string ugoiraName, int currentPosition, int ugoiraCount)
         {
             setProgressLabelText(currentPosition - 1, getProgressLabelText(currentPosition - 1) + " Failed.");
         }
