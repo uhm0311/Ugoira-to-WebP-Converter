@@ -20,6 +20,7 @@
 	ugoiraObj['animation.json'] = JSON.stringify({ ugokuIllustData: ugoiraMetaData.body });
 	ugoiraObj['url'] = ugoiraMetaData.body.originalSrc;
 	ugoiraObj['zip'] = illustID + "_" + metaData.body.illustTitle.replace(/[\\/:*?"<>|\u00b7]/g, "") + "ZipHQ.zip";
+	ugoiraObj['userName'] = metaData.body.userName;
 
 	return JSON.stringify(ugoiraObj);
 };
