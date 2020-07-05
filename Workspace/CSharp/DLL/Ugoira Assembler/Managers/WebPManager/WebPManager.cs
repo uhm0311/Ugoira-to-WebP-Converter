@@ -3,6 +3,7 @@ using Pixiv.Utilities.Ugoira.NativeCode;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 
 namespace Pixiv.Utilities.Ugoira.Assembly.Managers
 {
@@ -10,6 +11,8 @@ namespace Pixiv.Utilities.Ugoira.Assembly.Managers
     {
         private int ugoiraPosition = -1;
         private int ugoiraCount = -1;
+
+        private string ugoiraUserName = string.Empty;
 
         private string ugoiraPath = null;
         private string ugoiraPathBackup = null;
@@ -26,6 +29,9 @@ namespace Pixiv.Utilities.Ugoira.Assembly.Managers
         {
             this.actionListener = actionListener;
 
+            if (!ugoiraPath.EndsWith(FileManager.zip))
+                ugoiraUserName = Encoding.UTF8.GetString(Convert.FromBase64String(Path.GetExtension(ugoiraPath).Replace(FileManager.extensionSeparator.ToString(), "")));
+
             ugoiraPathBackup = ugoiraPath;
             ugoiraPosition = position;
             ugoiraCount = count;
@@ -40,6 +46,10 @@ namespace Pixiv.Utilities.Ugoira.Assembly.Managers
 
             ugoiraTitle = Path.GetFileName(newInputFile);
             ugoiraTitleBackup = Path.GetFileName(ugoiraPathBackup);
+
+            if (ugoiraUserName.Length > 0)
+                ugoiraTitleBackup = Path.GetFileNameWithoutExtension(ugoiraTitleBackup);
+
             frames = FileManager.integrityCheck(this.ugoiraPath = newInputFile);
             cwebpArgs = FileManager.getConvertingOptions();
         }
@@ -49,11 +59,16 @@ namespace Pixiv.Utilities.Ugoira.Assembly.Managers
             if (frames != null)
             {
                 string tempPath = Path.Combine(FileManager.tempProgressPath, ugoiraTitle);
-                string outputFilePath = Path.Combine(FileManager.outputPath, ugoiraTitle + FileManager.extensionSeparator + webPExtension);
-                string newOutputFilePath = Path.Combine(FileManager.outputPath, ugoiraTitleBackup + FileManager.extensionSeparator + webPExtension);
+                string outputPath = ugoiraUserName.Length == 0 ? FileManager.outputPath : Path.Combine(FileManager.outputPath, ugoiraUserName);
+
+                string outputFilePath = Path.Combine(outputPath, ugoiraTitle + FileManager.extensionSeparator + webPExtension);
+                string newOutputFilePath = Path.Combine(outputPath, ugoiraTitleBackup + FileManager.extensionSeparator + webPExtension);
 
                 if (File.Exists(outputFilePath))
                     File.Delete(outputFilePath);
+
+                if (!Directory.Exists(Directory.GetParent(outputFilePath).FullName))
+                    Directory.CreateDirectory(Directory.GetParent(outputFilePath).FullName);
 
                 convertToWebP(tempPath);
                 assembleWebP(tempPath, outputFilePath);
@@ -62,15 +77,20 @@ namespace Pixiv.Utilities.Ugoira.Assembly.Managers
                 {
                     if (File.Exists(newOutputFilePath))
                         File.Delete(newOutputFilePath);
-                    File.Move(outputFilePath, newOutputFilePath);
+
+                    if (File.Exists(outputFilePath))
+                        File.Move(outputFilePath, newOutputFilePath);
                 }
 
                 if (!ugoiraPath.Equals(ugoiraPathBackup))
                 {
                     if (Directory.Exists(ugoiraPathBackup))
                         Directory.Delete(ugoiraPathBackup);
-                    Directory.Move(ugoiraPath, ugoiraPathBackup);
+
+                    if (Directory.Exists(ugoiraPath))
+                        Directory.Move(ugoiraPath, ugoiraPathBackup);
                 }
+
                 Directory.Delete(tempPath, true);
             }
         }
@@ -79,7 +99,7 @@ namespace Pixiv.Utilities.Ugoira.Assembly.Managers
         {
             try
             {
-                onAssemblyStarted(ugoiraTitleBackup, ugoiraPosition, ugoiraCount);
+                onAssemblyStarted(ugoiraPath, ugoiraPosition, ugoiraCount);
 
                 List<string> args = new List<string>();
 
@@ -100,14 +120,14 @@ namespace Pixiv.Utilities.Ugoira.Assembly.Managers
 
                 WebPLibraryWrapper.callWebMux(args.ToArray());
 
-                onAssemblyPerformed(ugoiraTitleBackup, ugoiraPosition, ugoiraCount);
+                onAssemblyPerformed(ugoiraPath, ugoiraPosition, ugoiraCount);
             }
             catch (Exception e)
             {
                 Console.Error.WriteLine(e.ToString());
                 Console.Error.WriteLine();
 
-                onAseemblyFailed(ugoiraTitleBackup, ugoiraPosition, ugoiraCount);
+                onAseemblyFailed(ugoiraPath, ugoiraPosition, ugoiraCount);
             }
         }
 

@@ -75,7 +75,7 @@ namespace Pixiv.Utilities.Ugoira.Download.Managers
                                 writer.WriteLine(ugoiraSrcMap[ugoiraZipFileName].Item3);
                             }
                         }
-                        onUgoiraDownloadPerformed(ugoiraZipFileName, Convert.ToBase64String(stream.ToArray()), ugoiraIndex + 1, ugoiraCount);
+                        onUgoiraDownloadPerformed(ugoiraZipFileName, ugoiraSrcMap[ugoiraZipFileName].Item4, Convert.ToBase64String(stream.ToArray()), ugoiraIndex + 1, ugoiraCount);
                     }
                     waiter.Set();
                 };

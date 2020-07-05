@@ -11,6 +11,7 @@ namespace Pixiv.Utilities.Ugoira.Download.Managers
         private static readonly string ugoiraDataFunction = "ugoira_data";
         private static readonly string ugoiraZipFileName = "zip";
         private static readonly string ugoiraSrcName = "url";
+        private static readonly string ugoiraUserName = "userName";
 
         private static readonly string illustIDPrefix = "illust_id=";
     }

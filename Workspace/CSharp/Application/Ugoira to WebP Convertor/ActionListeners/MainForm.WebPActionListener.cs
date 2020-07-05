@@ -4,22 +4,32 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace Pixiv.Utilities.Ugoira.Convert.WebP
 {
     partial class MainForm : WebPManager.ActionListener
     {
-        public void onAssemblyStarted(string ugoiraName, int currentPosition, int ugoiraCount)
+        public void onAssemblyStarted(string ugoiraPath, int currentPosition, int ugoiraCount)
         {
-            setProgressLabelText(currentPosition - 1, "Assembling \"" + ugoiraName + "\"... " + progressMessage(currentPosition, ugoiraCount));
+            setProgressLabelText(currentPosition - 1, "Assembling \"" + Path.GetFileName(ugoiraPath) + "\"... " + progressMessage(currentPosition, ugoiraCount));
         }
 
-        public void onAssemblyPerformed(string ugoiraName, int currentPosition, int ugoiraCount)
+        public void onAssemblyPerformed(string ugoiraPath, int currentPosition, int ugoiraCount)
         {
+            string searchPattern = Path.GetFileName(ugoiraPath) + "*";
+            string parent = Directory.GetParent(ugoiraPath).FullName;
+
+            foreach (string ugoira in Directory.GetFiles(parent, searchPattern))
+                File.Delete(ugoira);
+
+            foreach (string ugoira in Directory.GetDirectories(parent, searchPattern))
+                Directory.Delete(ugoira, true);
+
             setProgressLabelText(currentPosition - 1, getProgressLabelText(currentPosition - 1) + " Done.");
         }
 
-        public void onAseemblyFailed(string ugoiraName, int currentPosition, int ugoiraCount)
+        public void onAseemblyFailed(string ugoiraPath, int currentPosition, int ugoiraCount)
         {
             setProgressLabelText(currentPosition - 1, getProgressLabelText(currentPosition - 1) + " Failed.");
         }
