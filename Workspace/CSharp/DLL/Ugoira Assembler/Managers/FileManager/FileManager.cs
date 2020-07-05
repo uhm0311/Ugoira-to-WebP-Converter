@@ -50,23 +50,26 @@ namespace Pixiv.Utilities.Ugoira.Assembly.Managers
             if (!Directory.Exists(inputPath))
                 Directory.CreateDirectory(inputPath);
 
-            List<string> inputFiles = new List<string>(Directory.GetFiles(inputPath, "*.zip"));
             List<string> inputDirectories = new List<string>(Directory.GetDirectories(inputPath));
+            List<string> inputFiles = new List<string>(Directory.GetFiles(inputPath, "*.zip.*"));
 
             int inputFilePosition = 1;
             int inputFilesCount = inputFiles.Count;
             string decompressedInputFile, newDecompressedInputFile = string.Empty;
 
-            for (int i = 0; i < inputDirectories.Count; i++)
-                inputDirectories[i] = inputDirectories[i];
-
             for (int i = 0; i < inputFiles.Count; i++)
             {
-                if (inputFiles[i].ToLower().EndsWith(zip))
-                {
-                    inputFiles[i] = inputFiles[i];
+                inputDirectories = new List<string>(Directory.GetDirectories(inputPath));
 
-                    decompressedInputFile = Path.Combine(Directory.GetParent(inputFiles[i]).FullName, Path.GetFileNameWithoutExtension(inputFiles[i]));
+                if (inputFiles[i].ToLower().Contains(zip))
+                {
+                    string withoutExtension = Path.GetFileNameWithoutExtension(inputFiles[i]);
+                    string withoutExtension2 = Path.GetFileNameWithoutExtension(withoutExtension);
+
+                    if (!withoutExtension.Equals(withoutExtension2))
+                        withoutExtension2 += Path.GetExtension(inputFiles[i]);
+
+                    decompressedInputFile = Path.Combine(Directory.GetParent(inputFiles[i]).FullName, withoutExtension2);
                     newDecompressedInputFile = Path.Combine(Directory.GetParent(decompressedInputFile).FullName, FileManager.getUgoiraPixivNumber(decompressedInputFile));
 
                     if (Directory.Exists(newDecompressedInputFile))

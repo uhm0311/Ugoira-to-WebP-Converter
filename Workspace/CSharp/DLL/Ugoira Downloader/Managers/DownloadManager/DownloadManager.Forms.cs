@@ -108,7 +108,7 @@ namespace Pixiv.Utilities.Ugoira.Download.Managers
                                     if (!ugoiraSrcMap.ContainsKey(fileName))
                                     {
                                         ugoiraZipFileNamesQueue.Enqueue(fileName);
-                                        ugoiraSrcMap.Add(fileName, new Tuple<string, string, string>(ugoiraLinks[ugoiraIndex - 1], ugoiraData[ugoiraSrcName].ToString(), ugoiraData[ugoiraInfo].ToString()));
+                                        ugoiraSrcMap.Add(fileName, new Tuple<string, string, string, string>(ugoiraLinks[ugoiraIndex - 1], ugoiraData[ugoiraSrcName].ToString(), ugoiraData[ugoiraInfo].ToString(), ugoiraData[ugoiraUserName].ToString()));
 
                                         onUgoiraNavigationPerformed(ugoiraIndex, ugoiraLinks.Count);
                                         navigateNextUgoira();

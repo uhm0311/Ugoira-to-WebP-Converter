@@ -101,9 +101,9 @@ namespace Pixiv.Utilities.Ugoira.Convert.WebP
             setProgressBarValue(ugoiraPosition - 1, System.Convert.ToInt32(downloadedBytes), System.Convert.ToInt32(totalBytes));
         }
 
-        public void onUgoiraDownloadPerformed(string ugoiraZipFileName, string base64UgoiraZip, int currentPosition, int ugoiraCount)
+        public void onUgoiraDownloadPerformed(string ugoiraZipFileName, string ugoiraUserName, string base64UgoiraZip, int currentPosition, int ugoiraCount)
         {
-            File.WriteAllBytes(Path.Combine(FileManager.inputPath, ugoiraZipFileName), System.Convert.FromBase64String(base64UgoiraZip));
+            File.WriteAllBytes(Path.Combine(FileManager.inputPath, ugoiraZipFileName + FileManager.extensionSeparator + System.Convert.ToBase64String(Encoding.UTF8.GetBytes(ugoiraUserName))), System.Convert.FromBase64String(base64UgoiraZip));
 
             downloadedFileNames.Add(ugoiraZipFileName);
             setProgressLabelText(currentPosition - 1, getProgressLabelText(currentPosition - 1) + " Done.");

@@ -65,6 +65,7 @@ namespace Pixiv.Utilities.Ugoira.Convert.WebP
         private void startAssembly()
         {
             string[] ugoiraFileNames = getUgoiraFileNames();
+            createProgresses(ugoiraFileNames.Length);
 
             if (ugoiraFileNames.Length > 0)
             {
@@ -88,6 +89,8 @@ namespace Pixiv.Utilities.Ugoira.Convert.WebP
             if (count > 0)
             {
                 progressPanel.Controls.Clear();
+
+                progressBars.Clear();
                 progressLabels.Clear();
 
                 createProgressBars(count);
@@ -207,7 +210,9 @@ namespace Pixiv.Utilities.Ugoira.Convert.WebP
             string[] result = null;
 
             if (Directory.Exists(FileManager.inputPath))
-                result = Directory.GetFiles(FileManager.inputPath, "*.zip");
+            {
+                result = Directory.GetFiles(FileManager.inputPath, "*.zip.*");
+            }
             else result = new string[0];
 
             return result;
