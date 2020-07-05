@@ -99,7 +99,7 @@ namespace Pixiv.Utilities.Ugoira.Assembly.Managers
         {
             try
             {
-                onAssemblyStarted(ugoiraPath, ugoiraPosition, ugoiraCount);
+                onAssemblyStarted(ugoiraPath, ugoiraTitleBackup, ugoiraPosition, ugoiraCount);
 
                 List<string> args = new List<string>();
 
@@ -120,14 +120,14 @@ namespace Pixiv.Utilities.Ugoira.Assembly.Managers
 
                 WebPLibraryWrapper.callWebMux(args.ToArray());
 
-                onAssemblyPerformed(ugoiraPath, ugoiraPosition, ugoiraCount);
+                onAssemblyPerformed(ugoiraPath, ugoiraTitleBackup, ugoiraPosition, ugoiraCount);
             }
             catch (Exception e)
             {
                 Console.Error.WriteLine(e.ToString());
                 Console.Error.WriteLine();
 
-                onAseemblyFailed(ugoiraPath, ugoiraPosition, ugoiraCount);
+                onAseemblyFailed(ugoiraPath, ugoiraTitleBackup, ugoiraPosition, ugoiraCount);
             }
         }
 

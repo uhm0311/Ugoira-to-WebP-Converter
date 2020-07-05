@@ -7,9 +7,9 @@ namespace Pixiv.Utilities.Ugoira.Assembly.Managers
 
         public interface ActionListener
         {
-            void onAssemblyStarted(string ugoiraName, int currentPosition, int ugoiraCount);
-            void onAssemblyPerformed(string ugoiraName, int currentPosition, int ugoiraCount);
-            void onAseemblyFailed(string ugoiraName, int currentPosition, int ugoiraCount);
+            void onAssemblyStarted(string ugoiraPath, string ugoiraName, int currentPosition, int ugoiraCount);
+            void onAssemblyPerformed(string ugoiraPath, string ugoiraName, int currentPosition, int ugoiraCount);
+            void onAseemblyFailed(string ugoiraPath, string ugoiraName, int currentPosition, int ugoiraCount);
 
             void onConversionStarted(string ugoiraName, int currentPosition, int ugoiraCount);
             void onConversionProcessing(string ugoiraName, int ugoiraPosition, int ugoiraCount, int framePosition, int frameCount);
@@ -17,22 +17,22 @@ namespace Pixiv.Utilities.Ugoira.Assembly.Managers
             void onConversionFailed(string ugoiraName, int currentPosition, int ugoiraCount);
         }
 
-        private void onAssemblyStarted(string ugoiraName, int currentPosition, int ugoiraCount)
+        private void onAssemblyStarted(string ugoiraPath, string ugoiraName, int currentPosition, int ugoiraCount)
         {
             if (actionListener != null)
-                actionListener.onAssemblyStarted(ugoiraName, currentPosition, ugoiraCount);
+                actionListener.onAssemblyStarted(ugoiraPath, ugoiraName, currentPosition, ugoiraCount);
         }
 
-        private void onAssemblyPerformed(string ugoiraName, int currentPosition, int ugoiraCount)
+        private void onAssemblyPerformed(string ugoiraPath, string ugoiraName, int currentPosition, int ugoiraCount)
         {
             if (actionListener != null)
-                actionListener.onAssemblyPerformed(ugoiraName, currentPosition, ugoiraCount);
+                actionListener.onAssemblyPerformed(ugoiraPath, ugoiraName, currentPosition, ugoiraCount);
         }
 
-        private void onAseemblyFailed(string ugoiraName, int currentPosition, int ugoiraCount)
+        private void onAseemblyFailed(string ugoiraPath, string ugoiraName, int currentPosition, int ugoiraCount)
         {
             if (actionListener != null)
-                actionListener.onAseemblyFailed(ugoiraName, currentPosition, ugoiraCount);
+                actionListener.onAseemblyFailed(ugoiraPath, ugoiraName, currentPosition, ugoiraCount);
         }
 
         private void onConversionStarted(string ugoiraName, int currentPosition, int ugoiraCount)
