@@ -6,18 +6,18 @@ namespace Pixiv.Utilities.Ugoira.Assembly.ActionListeners
 {
     public class WebPActionListener : WebPManager.ActionListener
     {
-        public void onAssemblyStarted(string ugoiraPath, int currentPosition, int ugoiraCount)
+        public void onAssemblyStarted(string ugoiraPath, string ugoiraName, int currentPosition, int ugoiraCount)
         {
             Console.Write("Assembling...");
         }
 
-        public void onAssemblyPerformed(string ugoiraPath, int currentPosition, int ugoiraCount)
+        public void onAssemblyPerformed(string ugoiraPath, string ugoiraName, int currentPosition, int ugoiraCount)
         {
             Console.WriteLine(" Done.");
             Console.WriteLine();
         }
 
-        public void onAseemblyFailed(string ugoiraPath, int currentPosition, int ugoiraCount)
+        public void onAseemblyFailed(string ugoiraPath, string ugoiraName, int currentPosition, int ugoiraCount)
         {
             Console.WriteLine(" Failed.");
             Console.WriteLine();
