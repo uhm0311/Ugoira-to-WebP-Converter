@@ -27,22 +27,30 @@ namespace Pixiv.Utilities.Ugoira.Convert.WebP
         {
             if (!loginDialog.InvokeRequired)
             {
-                string id = string.Empty;
-                string pw = string.Empty;
-
-                loginDialog.hidden = false;
-                loginDialog.Visible = false;
-
-                if (loginDialog.ShowDialog(this) == DialogResult.OK)
+                if (!this.InvokeRequired)
                 {
-                    id = loginDialog.getID();
-                    pw = loginDialog.getPassword();
+                    string id = string.Empty;
+                    string pw = string.Empty;
 
-                    loginDialog.clearLoginInfo();
+                    loginDialog.hidden = false;
+                    loginDialog.Visible = false;
+
+                    if (loginDialog.ShowDialog(this) == DialogResult.OK)
+                    {
+                        id = loginDialog.getID();
+                        pw = loginDialog.getPassword();
+
+                        loginDialog.clearLoginInfo();
+                    }
+                    else onPixivLoginFailed();
+
+                    return new Tuple<string, string>(id, pw);
                 }
-                else onPixivLoginFailed();
-
-                return new Tuple<string, string>(id, pw);
+                else
+                {
+                    OnPixivLoginNeededCallback callback = new OnPixivLoginNeededCallback(onPixivLoginNeeded);
+                    return (Tuple<string, string>)this.Invoke(callback);
+                }
             }
             else
             {
